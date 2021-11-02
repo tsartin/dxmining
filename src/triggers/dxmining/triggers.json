@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Lode Found",
+        "patterns": [
+                {
+                    "pattern": "^You determine that there is a (\\w+) lode of (.*) here\\.$",
+                    "type": "regex"
+                }
+        ]
+    },
+    {
+        "name": "Mine Found",
+        "patterns": [
+                {
+                    "pattern": "^There is a (\\w+) (.*) mine here on a (\\w+) lode that you\\'d guess is approximately (\\w+)\\% mined out\\.$",
+                    "type": "regex"
+                }
+        ]
+    },
+    {
+        "name": "Stronghold Found",
+        "patterns": [
+                {
+                    "pattern": "This stronghold is controlled by (\\w+)\\.",
+                    "type": "regex"
+                }
+        ]
+    },
+    {
+        "name": "Sign Found",
+        "patterns": [
+                {
+                    "pattern": "This (?:.*) mine is owned by (\\w+)\\.",
+                    "type": "regex"
+                }
+        ]
+    }
+]

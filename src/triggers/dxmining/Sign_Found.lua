@@ -1,0 +1,1 @@
+dx.mining:addMineOwner(matches[2])

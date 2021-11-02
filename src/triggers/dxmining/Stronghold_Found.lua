@@ -1,0 +1,1 @@
+dx.mining:addStronghold(matches[2])

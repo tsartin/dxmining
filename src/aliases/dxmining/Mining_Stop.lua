@@ -1,0 +1,2 @@
+
+dx.mining:stop()

@@ -1,0 +1,8 @@
+{
+  "package": "dxmining",
+  "title": "Delacroix Mining Script",
+  "version": "1.0.1",
+  "author": "tsartin",
+  "icon": "dxmining.png",
+  "dependencies": "mudlet-mapper"
+}
