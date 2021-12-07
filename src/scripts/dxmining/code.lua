@@ -205,37 +205,62 @@ function dx.mining:info()
 end
 
 
-function dx.mining:report()
+function dx.mining:report(channel)
   local owners = {}
-  
   local m = dx.mining.mines
   local s = dx.mining.strongholds
   local l = dx.mining.lodes
+  local lstring = {}
+  local mcount = 0
   cecho("\n ------------- MINE REPORT --------------- ")
-    if l and next(l)then 
-
+  if l and next(l) then
     cecho("\n\n LODES     \n")
-
-      for k, v in pairs(l) do
-          cecho("\n " ..k .. " " ..v.lodesize .. " " .. v.lodetype .." ready for a mine.")
+    for k, v in pairs(l) do
+      cecho("\n " .. k .. " " .. v.lodesize .. " " .. v.lodetype .. " ready for a mine.")
+      if channel then
+        table.insert(lstring, channel .. " " .. v.lodesize .. " " .. v.lodetype .. " at " .. k)
       end
-      
-    else
+    end
+  else
     cecho("\n NO EMPTY LODES FOUND")
   end
-  
-  if m and next(m) then 
-  cecho("\n\n MINES     \n")
+  if m and next(m) then
+    cecho("\n\n MINES     \n")
     for k, v in pairs(m) do
-
-      cecho("\n " ..k .. " " .. v.minesize .. " mine on a " ..v.lodesize .. " " .. v.lodetype .." " .. v.percentage .. " mined by " .. v.mineowner..".")
-
+      cecho(
+        "\n " ..
+        k ..
+        " " ..
+        v.minesize ..
+        " mine on a " ..
+        v.lodesize ..
+        " " ..
+        v.lodetype ..
+        " " ..
+        v.percentage ..
+        " mined by " ..
+        v.mineowner ..
+        "."
+      )
+      if channel and tonumber(v.percentage) >= 90 then
+        mcount = mcount + 1
+      end
     end
   else
     cecho("\n NO MINES FOUND")
   end
   cecho("\n ------------- END MINE REPORT --------------- ")
   send("\n")
+  if channel and mcount > 0 then
+    if next(lstring) then
+      table.insert(lstring, channel .. " --------------")
+    end
+    table.insert(lstring, channel .. " " .. mcount .. " mines about to pop")
+  end
+  if channel and next(lstring) then
+    table.insert(lstring, 1, channel .. " Available Lodes: ")
+    send(table.concat(lstring, "|"), false)
+  end
 end
 
 function dx.mining:addLode(lsize, ltype)
