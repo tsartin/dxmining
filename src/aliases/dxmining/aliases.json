@@ -21,7 +21,7 @@
     },
     {
         "name": "Mining Report",
-        "regex": "^dxmine report$"
+        "regex": "^dxmine report( (\\w+))?$"
     },
     {
         "name": "Dxmine",
