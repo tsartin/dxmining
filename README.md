@@ -6,7 +6,7 @@ This mining  script can be downloaded on the [release page](https://github.com/t
 
 # Getting Started
 
-1. Download dxmining.mpackage
+1. Download dxmining.mpackage from the most resent release (link above)
 2. Import the package into Mudlet
 3. Review all commands with `dxmine`
 4. Setup the system configs using `dxmine config`
